@@ -124,7 +124,7 @@ def main(dataDf, modelChar):
         st.write("Please select a page on the left.")
         st.write(dataDf)
     elif page == "Data Exploration":
-        st.title("Suuplier Characteristics Data Exploration")
+        st.title("Supplier Characteristics Data Exploration")
         y_axis = st.selectbox("Choose a variable for the y-axis", dataDf.columns, index=0)        
         x_axis = st.selectbox("Choose a variable for the x-axis", dataDf.columns, index=1)         
         visualize_data(dataDf, x_axis, y_axis)
@@ -155,7 +155,8 @@ def main(dataDf, modelChar):
             #st.write("Infeasible: There are no feasible solutions (e.g. if you set the constraints x <= 1 and x >=2).")
             #st.write("Unbounded: The constraints are not bounded, maximising the solution will tend towards infinity.")
             #st.write("Undefined: The optimal solution may exist but may not have been found.")
-            
+            sdf = pd.read_csv("Supplier_Data.csv")
+            st.write(sdf)
             st.markdown(optimalValues[0])
             print(optimalValues[0])
             
