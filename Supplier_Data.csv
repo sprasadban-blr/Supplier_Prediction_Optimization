@@ -1,7 +1,7 @@
-Supplier_ID,Quoted_Price,Quality,Delivery,Service
-S1,4500,8,9,8
-S2,5000,9,8,10
-S3,4300,9,8,9
-S4,4600,8,9,8
-S5,4650,10,9,8
-S6,4000,9,8,9
+Supplier_ID,Abbreviation,Quoted_Price,Quality,Delivery,Service
+MRF,MRF,4500,3,4,4
+JK Tyre,JK,5000,5,4,4
+Good Year,GY,4300,4,3,4
+Bridgestone,BS,4650,4,4,3
+Michelin,MC,4650,4,3,4
+Continental,CN,4800,4,4,4

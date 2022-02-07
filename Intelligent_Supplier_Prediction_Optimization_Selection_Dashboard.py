@@ -67,27 +67,27 @@ def getOptimalValues(exp_price, exp_quality, exp_delivery, exp_service):
     problem = p.LpProblem('SupplierSelection', p.LpMinimize)
 
     # Create Problem Variables
-    suplrs = p.LpVariable.dicts("S", df['Supplier_ID'], cat='Binary')
+    suplrs = p.LpVariable.dicts("", df['Abbreviation'], cat='Binary')
 
     # Objective Function
     # Example: 4500*S1+5000*S2+4300*S3+4600*S4+4650*S5
-    problem += p.lpSum(suplrs[df['Supplier_ID'][i]] * df['Quoted_Price'][i] for i in range(df['Supplier_ID'].count()))
+    problem += p.lpSum(suplrs[df['Abbreviation'][i]] * df['Quoted_Price'][i] for i in range(df['Abbreviation'].count()))
 
     # Constraints
     #1 #Example: S1+S2+S3+S4+S5 = 1 
-    problem += p.lpSum(suplrs[df['Supplier_ID'][i]] for i in range(df['Supplier_ID'].count())) == 1
+    problem += p.lpSum(suplrs[df['Abbreviation'][i]] for i in range(df['Abbreviation'].count())) == 1
 
     #2 # Example: 4500*S1+5000*S2+4300*S3+4600*S4+4650*S5 <= 4700
-    problem += p.lpSum(suplrs[df['Supplier_ID'][i]] * df['Quoted_Price'][i] for i in range(df['Supplier_ID'].count())) <= exp_price
+    problem += p.lpSum(suplrs[df['Abbreviation'][i]] * df['Quoted_Price'][i] for i in range(df['Abbreviation'].count())) <= exp_price
 
     #3 For Quality
-    problem += p.lpSum(suplrs[df['Supplier_ID'][i]] * df['Quality'][i] for i in range(df['Supplier_ID'].count())) >= exp_quality
+    problem += p.lpSum(suplrs[df['Abbreviation'][i]] * df['Quality'][i] for i in range(df['Abbreviation'].count())) >= exp_quality
 
     #4 For Delivery
-    problem += p.lpSum(suplrs[df['Supplier_ID'][i]] * df['Delivery'][i] for i in range(df['Supplier_ID'].count())) >= exp_delivery
+    problem += p.lpSum(suplrs[df['Abbreviation'][i]] * df['Delivery'][i] for i in range(df['Abbreviation'].count())) >= exp_delivery
 
     #5 For Service
-    problem += p.lpSum(suplrs[df['Supplier_ID'][i]] * df['Service'][i] for i in range(df['Supplier_ID'].count())) >= exp_service
+    problem += p.lpSum(suplrs[df['Abbreviation'][i]] * df['Service'][i] for i in range(df['Abbreviation'].count())) >= exp_service
 
     # Solve problem
     problem.solve()
@@ -102,7 +102,7 @@ def getOptimalValues(exp_price, exp_quality, exp_delivery, exp_service):
     selectedSupplier = ""
     for v in problem.variables():
         print(v.name, "=", v.varValue)
-        supplier.append(v.name.replace("S_", "") + " = " + str(v.varValue))
+        supplier.append(v.name.replace("_", "") + " = " + str(v.varValue))
         if v.varValue is not None and v.varValue > 0:
             selectedSupplier = v.name
     quotedPrice = p.value(problem.objective)
@@ -164,7 +164,7 @@ def main(dataDf, modelChar):
             st.write(optimalValues[1])
             st.write('Status = ', optimalValues[2])
             if optimalValues[2] == 'Optimal':
-                finalResult = "Supplier chosen '"+ optimalValues[4].replace("S_", "") + "' with price = " + str(optimalValues[3])
+                finalResult = "Supplier chosen '"+ optimalValues[4].replace("_", "") + "' with price = " + str(optimalValues[3])
                 st.write(finalResult)
 
 #Load data and create ML model
