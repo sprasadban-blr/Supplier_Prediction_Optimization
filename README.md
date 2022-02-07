@@ -24,6 +24,6 @@ Step 3: Run UI application from browser
 
 Highlights:
   * Performing supplier characteristics prediction using multi output regression 
-  * Selecting one among the best regression algorithms (Liner Regression, KNN, Decision Tree, Direct Multioutput Regression, Chained Mutioutput Regression)
+  * Selecting one among the best regression algorithms (Liner Regression, KNN, Decision Tree, Direct Multioutput Regression, Chained Multioutput Regression)
   * Deriving optimization problem with set of linear equations based on supplier characteristics
-  * Chosing best supplier based on predicted supplier charactericts and executing optimization linear equations.
+  * Choosing best supplier based on predicted supplier characteristics and executing optimization linear equations.
