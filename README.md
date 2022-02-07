@@ -6,7 +6,7 @@ Prerequisite:
 	* Install needed python libraries
 		- python -m pip install --upgrade pip
 		- pip install sklearn
-		- pip install streamlit
+		- pip install --upgrade streamlit
 		- pip install pulp
 		- pip install altair
 		- pip install matplotlib
