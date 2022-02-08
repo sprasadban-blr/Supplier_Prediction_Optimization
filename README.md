@@ -1,4 +1,4 @@
-# Supplier Charactericts Prediction, Finding Optimized Supplier and Supplier Selection
+# Supplier characteristics Prediction, Finding Optimized Supplier and Supplier Selection
 POC to check concept on Supplier Prediction, Optimization and Supplier selection process
 
 Prerequisite:
